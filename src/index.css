@@ -244,3 +244,11 @@ a {
 #error {
   color: red;
 }
+#total-orders-delivered {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin: 16px;
+  background-color: #fff;
+  padding: 8px;
+}
