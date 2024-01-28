@@ -1,0 +1,246 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.app-container {
+  display: flex;
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
+
+.order-form {
+  flex: 1;
+  padding: 20px;
+  max-width: 600px;
+  margin: auto;
+}
+
+
+.order-form label,
+.order-form input,
+.order-form select {
+  width: 100%;
+}
+
+label {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+input,
+select {
+  padding: 10px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: '';
+}
+
+
+@media screen and (max-width: 600px) {
+  select {
+    padding: 8px;
+    font-size: 14px;
+  }
+}
+
+.place-order-btn {
+  background-color: #4caf50;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.place-order-btn:hover {
+  background-color: #45a049;
+}
+
+
+@media screen and (max-width: 600px) {
+  label {
+    font-size: 14px;
+  }
+
+  input,
+  select {
+    font-size: 14px;
+  }
+}
+
+.order-list {
+  list-style: none;
+  padding: 0;
+}
+
+.order-item {
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+.menu-icon {
+  cursor: pointer;
+  font-size: 24px;
+  color: #333;
+}
+
+.menu {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  position: fixed;
+  top: 0;
+  left: -250px;
+  height: 100%;
+  width: 250px;
+  background-color: #f9f9f9;
+  border-right: 1px solid #ddd;
+  transition: left 0.3s ease;
+  z-index: 1;
+}
+
+.menu-open .menu {
+  left: 0;
+}
+
+.menu li {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  padding: 20px;
+  border-bottom: 1px solid #ddd;
+  cursor: pointer;
+}
+
+.menu-icon.open {
+  color: #fff;
+  padding: 20px;
+}
+
+#form-heading {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+
+.track-order-container {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid #ddd;
+  padding: 10px;
+  margin: 20px auto;
+  max-width: 800px;
+}
+
+.order-column {
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+.order-box {
+  border: 2px solid #ddd;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+button {
+  margin-top: 10px;
+}
+.order-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+.order-box p {
+  margin: 10px 0;
+  font-weight: bold;
+  text-align: center;
+}
+
+.order-box button {
+  margin-top: 10px;
+}
+
+.button-container {
+  margin-top: 16px;
+}
+
+button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+#order-stage-heading {
+  margin-bottom: 30px;
+}
+
+.highlight-red {
+  background-color: red;
+}
+
+.table-container {
+  overflow-x: auto;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid #ddd;
+  padding: 10px;
+  margin: 20px auto;
+  max-width: 800px;
+}
+
+.order-table {
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+.order-table th, .order-table td {
+  padding: 12px;
+  text-align: left;
+
+}
+
+@media screen and (max-width: 600px) {
+  .order-table {
+    font-size: 12px;
+  }
+}
+
+a {
+  text-decoration: none;
+}
+
+#error {
+  color: red;
+}
