@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { updateOrderStage } from '../Redux/Actions';
-import moment from 'moment';
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { updateOrderStage } from "../Redux/Actions";
+import moment from "moment";
 
 const TrackOrder = () => {
   const dispatch = useDispatch();
@@ -33,11 +33,11 @@ const TrackOrder = () => {
     const orderIndex = orders.findIndex((order) => order.id === orderId);
     if (orderIndex !== -1) {
       const nextColumn =
-        orders[orderIndex].stage === 'Order Placed'
-          ? 'Order In Making'
-          : orders[orderIndex].stage === 'Order In Making'
-          ? 'Order Ready'
-          : 'Order Picked';
+        orders[orderIndex].stage === "Order Placed"
+          ? "Order In Making"
+          : orders[orderIndex].stage === "Order In Making"
+          ? "Order Ready"
+          : "Order Picked";
 
       dispatch(updateOrderStage(orderId, nextColumn));
     }
@@ -52,7 +52,9 @@ const TrackOrder = () => {
         {ordersForStage.map((order) => (
           <div
             key={order.id}
-            className={`order-box ${shouldHighlightRed(order.timestamp) ? 'highlight-red' : ''}`}
+            className={`order-box ${
+              shouldHighlightRed(order.timestamp, stage) ? "highlight-red" : ""
+            }`}
           >
             <p>Order ID: {order.id}</p>
             <p>{getFormattedTimer(order.timestamp, stage)}</p>
@@ -63,17 +65,21 @@ const TrackOrder = () => {
     );
   };
 
-  const shouldHighlightRed = (timestamp) => {
-    const currentTime = new Date();
-    const orderTime = new Date(timestamp);
-    const duration = moment.duration(currentTime - orderTime);
+  const shouldHighlightRed = (timestamp, stage) => {
+    if (stage !== "Order Picked") {
+      const currentTime = new Date();
+      const orderTime = new Date(timestamp);
+      const duration = moment.duration(currentTime - orderTime);
 
-    return duration.asMinutes() > 3;
+      return duration.asMinutes() > 3;
+    }
+
+    return false;
   };
 
   const getFormattedTimer = (timestamp, stage) => {
-    if (stage === 'Order Picked') {
-      return 'Order Picked';
+    if (stage === "Order Picked") {
+      return "Order Picked";
     }
 
     const currentTime = new Date();
@@ -81,18 +87,18 @@ const TrackOrder = () => {
     const duration = moment.duration(currentTime - orderTime);
 
     const hours = Math.floor(duration.asHours());
-    const minutes = moment.utc(duration.asMilliseconds()).format('mm');
-    const seconds = moment.utc(duration.asMilliseconds()).format('ss');
+    const minutes = moment.utc(duration.asMilliseconds()).format("mm");
+    const seconds = moment.utc(duration.asMilliseconds()).format("ss");
 
     return `${hours}:${minutes}:${seconds}`;
   };
 
   return (
     <div className="track-order-container">
-      <div className="order-column">{renderOrders('Order Placed')}</div>
-      <div className="order-column">{renderOrders('Order In Making')}</div>
-      <div className="order-column">{renderOrders('Order Ready')}</div>
-      <div className="order-column">{renderOrders('Order Picked')}</div>
+      <div className="order-column">{renderOrders("Order Placed")}</div>
+      <div className="order-column">{renderOrders("Order In Making")}</div>
+      <div className="order-column">{renderOrders("Order Ready")}</div>
+      <div className="order-column">{renderOrders("Order Picked")}</div>
     </div>
   );
 };
