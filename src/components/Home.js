@@ -24,6 +24,7 @@ const OrderTable = () => {
   };
 
   return (
+    <>
     <div className="table-container">
       <table className="order-table">
         <thead>
@@ -50,6 +51,8 @@ const OrderTable = () => {
         </tbody>
       </table>
     </div>
+    <h2 id="total-orders-delivered">Total pizza delivered today: {orders.filter((order)=>order.stage === 'Order Picked').length}{console.log(orders)}</h2>
+    </>
   );
 };
 
